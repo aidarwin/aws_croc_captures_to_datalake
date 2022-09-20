@@ -11,6 +11,11 @@ Running Delta commands on your local machine and studying the files that are cre
 This repo has the following key components :
 
 <dl>
+  <dt>Source Data</dt>
+  <dd>Croc Data Captures</dd>
+  <dd>Croc Zones</dd>
+  <dd>Croc Types</dd>
+  <dd>Date Table</dd>
   <dt>Data Lake Setup</dt>
   <dd>Lab 1 - Setting up your AWS Environment</dd>
   <dd>Lab 2 - Setting up your storage and zones</dd>  
