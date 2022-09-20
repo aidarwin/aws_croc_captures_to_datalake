@@ -9,12 +9,17 @@ Running Delta commands on your local machine and studying the files that are cre
 ## Notebooks
 
 This repo has the following key components :
-Lab 1 - Setting up your AWS Environment
-Lab 2 - Setting up your storage and zones
-Lab 3 - Uploading your source data to landing zone
-Lab 4 - Creating Landing to Bronze pipelines
-Lab 5 - Creating Bronze to Silver pipelines
-Lab 6 - Creating Silver to Gold pipelines
+
+<dl>
+  <dt>Data Lake Setup</dt>
+  <dd>Lab 1 - Setting up your AWS Environment</dd>
+  <dd>Lab 2 - Setting up your storage and zones</dd>  
+  <dt>Data Engineering</dt>
+  <dd>Lab 3 - Uploading your source data to landing zone </dd>
+  <dd>Lab 4 - Creating Landing to Bronze pipelines</dd>
+  <dd>Lab 5 - Creating Bronze to Silver pipelines</dd>
+  <dd>Lab 6 - Creating Silver to Gold pipelines</dd>
+</dl>
 
 ## Architecture Diagram
 
