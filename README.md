@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repo provides working code notebooks that you can use to get a Data Lake operational in AWS using Croc Capture data.  You can execute code like the Delta Lake documentation with Scala Spark and PySpark on your local machine. It also provides delta-rs examples.
+This repo provides working code notebooks that you can use to get a Data Lake operational in AWS using Croc Capture data.  You can execute code like the Delta Lake documentation with Scala Spark and PySpark on your local machine. It also provides Delta Lake function examples.
 
 Running Delta commands on your local machine and studying the files that are created is a great way to learn about how Delta Lake works.
 
