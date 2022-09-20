@@ -22,8 +22,31 @@ This repo has the following key components :
   <dt>Data Engineering</dt>
   <dd>Lab 3 - Uploading your source data to landing zone </dd>
   <dd>Lab 4 - Creating Landing to Bronze pipelines</dd>
+  
+  1 Notebook for all (pass in source and target file as parameters)
+  
+  The landing bronze pipeline does the following :
+  Saves the file into delta format
+  Does insert and update (3 croc files for each time period where we will insert three times)
+  
   <dd>Lab 5 - Creating Bronze to Silver pipelines</dd>
+  
+  1 Notebook for all captures
+  1 Notebook for zones
+  1 Notebook for crocs
+  1 Notebook for date
+  
+  The bronze to silver notebook does the following :
+  Persists schema for files (declares data types)
+  Transforms the data e.g. Transpose.
+  
   <dd>Lab 6 - Creating Silver to Gold pipelines</dd>
+  
+  1 Notebook
+  
+  The silver to gold notebook does the following :
+  Aggregates data for easy analysis e.g. number of captures group by year
+  
 </dl>
 
 ## Pandas
