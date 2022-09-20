@@ -26,6 +26,10 @@ This repo has the following key components :
   <dd>Lab 6 - Creating Silver to Gold pipelines</dd>
 </dl>
 
+## Pandas
+
+You can use pandas to do simple transformations if you don't have a Spark cluster. 
+
 ## Architecture Diagram
 
 A diagram of the AWS environment is illustrated below relating AWS resources to equivalent Microsoft resources. 
