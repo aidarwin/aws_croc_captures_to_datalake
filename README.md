@@ -61,4 +61,71 @@ A diagram of the AWS environment is illustrated below relating AWS resources to 
 
 To learn more about Data Lakes, head over to our webpage https://aidarwin.com.au for upcoming training courses.
 
+Maintenance
+
+To improve query speed, Delta Lake supports the ability to optimise the layout of data in storage. There are various ways to optimize the layout outlined here.
+
+Compaction - Delta Lake can improve the speed of read queries from a table by coalescing small files into larger ones.
+
+from delta.tables import *
+
+deltaTable = DeltaTable.forPath(spark, pathToTable)  # For path-based tables
+# For Hive metastore-based tables: deltaTable = DeltaTable.forName(spark, tableName)
+
+deltaTable.optimize().executeCompaction()
+
+# If you have a large amount of data and only want to optimize a subset of it, you can specify an optional partition predicate using `where`
+deltaTable.optimize().where("date='2021-11-18'").executeCompaction()
+
+You can alternatively compact a table by repartitioning it to smaller number of files.
+
+path = "..."
+numFiles = 16
+
+(spark.read
+ .format("delta")
+ .load(path)
+ .repartition(numFiles)
+ .write
+ .option("dataChange", "false")
+ .format("delta")
+ .mode("overwrite")
+ .save(path))
+
+
+ 
+Z Ordering – a technical to co-locate related information in the same set of files. Z-Ordering aims to produce evenly-balanced data files with respect to the number of tuples, but not necessarily data size on disk
+
+from delta.tables import *
+
+deltaTable = DeltaTable.forPath(spark, pathToTable)  # path-based table
+# For Hive metastore-based tables: deltaTable = DeltaTable.forName(spark, tableName)
+
+deltaTable.optimize().executeZOrderBy("eventType")
+
+# If you have a large amount of data and only want to optimize a subset of it, you can specify an optional partition predicate using `where`
+deltaTable.optimize().where("date='2021-11-18'").executeZOrderBy("eventType")
+
+
+Multi-part Checkpointing – By default, Delta Lake protocol writes checkpoint to a single file.   Increasing to multiple files allows parallelism which speeds up writing to the checkpoint.
+
+Delta Lake protocol allows splitting the checkpoint into multiple Parquet files. This parallelizes and speeds up writing the checkpoint. In Delta Lake, by default each checkpoint is written as a single Parquet file. To to use this feature, set the SQL configuration spark.databricks.delta.checkpoint.partSize=<n>, where n is the limit of number of actions (such as AddFile) at which Delta Lake on Apache Spark will start parallelizing the checkpoint and attempt to write a maximum of this many actions per checkpoint file.
+
+Remove files no longer referenced by Delta Lake.
+
+from delta.tables import *
+
+deltaTable = DeltaTable.forPath(spark, pathToTable)  # path-based tables, or
+deltaTable = DeltaTable.forName(spark, tableName)    # Hive metastore-based tables
+
+deltaTable.vacuum()        # vacuum files not required by versions older than the default retention period
+
+deltaTable.vacuum(100)     # vacuum files not required by versions more than 100 hours old
+
+Disable Spark caching – Best practices does not recommend using Spark caching for the following reasons :
+
+You lose any data skipping that can come from additional filters added on top of the cached DataFrame.
+
+The data that gets cached may not be updated if the table is accessed using a different identifier (for example, you do spark.table(x).cache() but then write to the table using spark.write.save(/some/path).
+
 
