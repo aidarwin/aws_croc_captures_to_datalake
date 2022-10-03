@@ -4,19 +4,19 @@
 
 This repo provides working code notebooks that you can use to get a Data Lake operational in AWS using Croc Capture data.  You can execute code like the Delta Lake documentation with Scala Spark and PySpark on your local machine. It also provides Delta Lake function examples.
 
-### 2 Learning More
+## 2 Learning More
 
 To learn more about Data Lakes, head over to our webpage https://aidarwin.com.au for upcoming training courses.
 
 Running Delta commands on your local machine and studying the files that are created is a great way to learn about how Delta Lake works.
 
-### 3 Architecture Diagram
+## 3 Architecture Diagram
 
 A diagram of the AWS environment is illustrated below relating AWS resources to equivalent Microsoft resources. 
 
 Note you will need an AWS account for these labs with permissions to create resources.
 
-### 4 Notebooks and Assets
+## 4 Notebooks and Assets
 
 This repo has the following key assets :
 
@@ -41,7 +41,7 @@ This repo has the following key assets :
   <dd>Lab 8 - Reading Data from S3 using Python Visual</dd>
  
 
-### There are 8 Labs in total
+## 5 Labs - There are a total of 8 Labs in total
 
  Lab 1 - Setting up your AWS Environment
  ----------------------------------------
@@ -121,11 +121,22 @@ See Notebooks folder for :
   
 
  
-### Maintenance
+## 6 Maintenance
 
+### Compute cost
+  
+To keep compute costs of the EMR cluster in check you will need to do the following :
+  
+  a. Set the lowest cost EMR cluster
+  b. Set Cost Analyser options for resource and hourly level granularity
+  c. Setup budgets with notifications in Cost Analyser 
+  d. Pause or shutdown cluster when not in use
+
+### File Maintenance
+  
 To improve query speed, Delta Lake supports the ability to optimise the layout of data in storage. There are various ways to optimize the layout outlined here.
 
-## Compaction - Delta Lake can improve the speed of read queries from a table by coalescing small files into larger ones.
+#### Compaction - Delta Lake can improve the speed of read queries from a table by coalescing small files into larger ones.
 
 from delta.tables import *
 
@@ -155,7 +166,7 @@ numFiles = 16
 
 
  
-## Z Ordering 
+#### Z Ordering 
 A technical to co-locate related information in the same set of files. Z-Ordering aims to produce evenly-balanced data files with respect to the number of tuples, but not necessarily data size on disk
 
 from delta.tables import *
@@ -169,12 +180,12 @@ deltaTable.optimize().executeZOrderBy("eventType")
 deltaTable.optimize().where("date='2021-11-18'").executeZOrderBy("eventType")
 
 
-## Multi-part Checkpointing 
+#### Multi-part Checkpointing 
 By default, Delta Lake protocol writes checkpoint to a single file.   Increasing to multiple files allows parallelism which speeds up writing to the checkpoint.
 
 Delta Lake protocol allows splitting the checkpoint into multiple Parquet files. This parallelizes and speeds up writing the checkpoint. In Delta Lake, by default each checkpoint is written as a single Parquet file. To to use this feature, set the SQL configuration spark.databricks.delta.checkpoint.partSize=<n>, where n is the limit of number of actions (such as AddFile) at which Delta Lake on Apache Spark will start parallelizing the checkpoint and attempt to write a maximum of this many actions per checkpoint file.
 
-## Remove files no longer referenced by Delta Lake
+#### Remove files no longer referenced by Delta Lake
 
 from delta.tables import *
 
@@ -185,7 +196,7 @@ deltaTable.vacuum()        # vacuum files not required by versions older than th
 
 deltaTable.vacuum(100)     # vacuum files not required by versions more than 100 hours old
 
-## Disable Spark caching
+#### Disable Spark caching
 
 Best practices does not recommend using Spark caching for the following reasons :
 
