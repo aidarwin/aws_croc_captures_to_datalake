@@ -4,9 +4,17 @@
 
 This repo provides working code notebooks that you can use to get a Data Lake operational in AWS using Croc Capture data.  You can execute code like the Delta Lake documentation with Scala Spark and PySpark on your local machine. It also provides Delta Lake function examples.
 
+### 2 Learning More
+
+To learn more about Data Lakes, head over to our webpage https://aidarwin.com.au for upcoming training courses.
+
 Running Delta commands on your local machine and studying the files that are created is a great way to learn about how Delta Lake works.
 
-### 2 Notebooks
+### 3 Architecture Diagram
+
+A diagram of the AWS environment is illustrated below relating AWS resources to equivalent Microsoft resources. 
+
+### 4 Notebooks
 
 This repo has the following key components :
 
@@ -28,22 +36,41 @@ This repo has the following key components :
   <dd>Lab 7 - Preparing with Power BI Desktop </dd>
   <dd>Lab 8 - Reading Data from S3 using Python Visual</dd>
  
- 
+
+### 5 Labs
+
+ Lab 1 - Setting up your AWS Environment
+ ----------------------------------------
+
+For the purposes of the croc labs, AWS EMR will need to be setup for compute, with notebooks executed by AWS Glue and output to S3.
+  
+Requires more explanations step by step...
+  
+
+ Lab 2 - Setting up your storage and zones
+----------------------------------------
+
+AWS S3 bucket will consist of the following folder structure.
+  
+Requires more explanations step by step...
+
+  
  Lab 3 - Uploading your source data to landing zone
- ---------------------------------------------------
+---------------------------------------------------
 
 For the purposes of the croc data, this will be manually updates in AWS using Upload tools.
-# Requires more explanations step by step
+  
+Requires more explanations step by step...
 
  Lab 4 - Creating Landing to Bronze pipelines
- ---------------------------------------------------
+---------------------------------------------------
 
 The landing bronze pipeline does the following :
   a. Converts source files from csv into delta format
   b. Combine all 3 croc capture time period files in a single delta file
   
  Lab 5 - Creating Bronze to Silver pipelines
- -------------------------------------------
+-------------------------------------------
   
 The bronze to silver notebook does the following :
   a. Persists schema for files (declares data types)
@@ -63,25 +90,34 @@ The silver to gold notebook does the following :
 
  See Notebooks folder for :  
   z. 1 Notebook
+
+ Lab 7 - Analysis with Power BI
+ ------------------------------------------
+The Power BI Desktop tool will be required for Analysis :
+
+  a. Download Power BI Desktop
+  b. Configure Python IDE in Power BI options
+  c. Download packages
+
+ See Notebooks folder for :  
+  z. 1 Notebook
+
+ Lab 8 - Reading Data from S3 using Python Visual
+-------------------------------------------------
+Using the Python visual for Power BI, copy in the python code to read from Delta lake tables from Amazon's AWS S3 bucket.
+  
+  a. Set connection keys
+  b. Paste python code
+  c. Execute and analyse Delta Lake files with Python visual 
+  d. Perform analysis with Pandas to show how to read data from csv files if you don't have an EMR Spark cluster
+
+See Notebooks folder for :  
+  y. 1 Notebook for Python analysis of Delta Lake files in S3
+  z. 1 Notebook for Pandas analysis on CSV files in S3
   
 
-### Pandas
-
-You can use pandas to do simple transformations if you don't have a Spark cluster. 
-
-### Power BI
-
-You can use pandas to do simple transformations if you don't have a Spark cluster. 
-
-### Architecture Diagram
-
-A diagram of the AWS environment is illustrated below relating AWS resources to equivalent Microsoft resources. 
-
-## Learning More
-
-To learn more about Data Lakes, head over to our webpage https://aidarwin.com.au for upcoming training courses.
-
-## Maintenance
+ 
+### Maintenance
 
 To improve query speed, Delta Lake supports the ability to optimise the layout of data in storage. There are various ways to optimize the layout outlined here.
 
@@ -95,7 +131,8 @@ For Hive metastore-based tables: deltaTable = DeltaTable.forName(spark, tableNam
 deltaTable.optimize().executeCompaction()
 
 If you have a large amount of data and only want to optimize a subset of it, you can specify an optional partition predicate using `where`
-deltaTable.optimize().where("date='2021-11-18'").executeCompaction()
+
+  deltaTable.optimize().where("date='2021-11-18'").executeCompaction()
 
 You can alternatively compact a table by repartitioning it to smaller number of files.
 
