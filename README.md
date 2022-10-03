@@ -135,6 +135,16 @@ To keep compute costs of the EMR cluster in check you will need to do the follow
 ### File Maintenance
   
 To improve query speed, Delta Lake supports the ability to optimise the layout of data in storage. There are various ways to optimize the layout outlined here.
+  
+  a. Compaction
+  b. Z Ordering
+  c. Multi-File Checkpointing 
+  d. Remove files no longer referenced by Delta Lake
+  e. Disable Spark Caching
+
+See Notebooks folder for :  
+  y. 1 Notebook for each of the above 5 below maintenance scripts
+
 
 #### Compaction - Delta Lake can improve the speed of read queries from a table by coalescing small files into larger ones.
 
