@@ -14,30 +14,34 @@ Running Delta commands on your local machine and studying the files that are cre
 
 A diagram of the AWS environment is illustrated below relating AWS resources to equivalent Microsoft resources. 
 
-### 4 Notebooks
+Note you will need an AWS account for these labs with permissions to create resources.
 
-This repo has the following key components :
+### 4 Notebooks and Assets
+
+This repo has the following key assets :
 
 <dl>
   <dt>Source Data</dt>
   <dd>Croc Data Captures</dd>
   <dd>Croc Zones</dd>
   <dd>Croc Types</dd>
-  <dd>Date Table</dd>
+ 
   <dt>Data Lake Setup</dt>
   <dd>Lab 1 - Setting up your AWS Environment</dd>
   <dd>Lab 2 - Setting up your storage and zones</dd>  
+ 
   <dt>Data Engineering</dt>
   <dd>Lab 3 - Uploading your source data to landing zone </dd>
   <dd>Lab 4 - Creating Landing to Bronze pipelines</dd>
   <dd>Lab 5 - Creating Bronze to Silver pipelines</dd>
   <dd>Lab 6 - Creating Silver to Gold pipelines</dd>  
+  
   <dt>Data Analysis</dt>
   <dd>Lab 7 - Preparing with Power BI Desktop </dd>
   <dd>Lab 8 - Reading Data from S3 using Python Visual</dd>
  
 
-### 8 Labs
+### There are 8 Labs in total
 
  Lab 1 - Setting up your AWS Environment
  ----------------------------------------
