@@ -16,6 +16,9 @@ A diagram of the AWS environment is illustrated below relating AWS resources to 
 
 Note you will need an AWS account for these labs with permissions to create resources.
 
+![image](https://user-images.githubusercontent.com/103006306/193565554-9b416e11-6878-45cd-8afc-2e7dd292e1b8.png)
+
+
 ## 4 Notebooks and Assets
 
 This repo has the following key assets :
