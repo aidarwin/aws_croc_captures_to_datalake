@@ -22,32 +22,48 @@ This repo has the following key components :
   <dt>Data Engineering</dt>
   <dd>Lab 3 - Uploading your source data to landing zone </dd>
   <dd>Lab 4 - Creating Landing to Bronze pipelines</dd>
-  
-  1 Notebook for all (pass in source and target file as parameters)
-  
-  The landing bronze pipeline does the following :
-  Saves the file into delta format
-  Does insert and update (3 croc files for each time period where we will insert three times)
-  
   <dd>Lab 5 - Creating Bronze to Silver pipelines</dd>
+  <dd>Lab 6 - Creating Silver to Gold pipelines</dd>  
+  <dt>Data Analysis</dt>
+  <dd>Lab 7 - Preparing with Power BI Desktop </dd>
+  <dd>Lab 8 - Reading Data from S3 using Python Visual</dd>
+ 
+ 
+ Lab 3 - Uploading your source data to landing zone
+ ---------------------------------------------------
+
+For the purposes of the croc data, this will be manually updates in AWS using Upload tools.
+# Requires more explanations step by step
+
+ Lab 4 - Creating Landing to Bronze pipelines
+ ---------------------------------------------------
+
+The landing bronze pipeline does the following :
+  a. Converts source files from csv into delta format
+  b. Combine all 3 croc capture time period files in a single delta file
   
-  1 Notebook for all captures
-  1 Notebook for zones
-  1 Notebook for crocs
-  1 Notebook for date
+ Lab 5 - Creating Bronze to Silver pipelines
+ -------------------------------------------
   
-  The bronze to silver notebook does the following :
-  Persists schema for files (declares data types)
-  Transforms the data e.g. Transpose.
+The bronze to silver notebook does the following :
+  a. Persists schema for files (declares data types)
+  b. Transforms the data e.g. Transpose from columns to rows for Zones
   
-  <dd>Lab 6 - Creating Silver to Gold pipelines</dd>
+See Notebooks folder for :
+  x. 1 Notebook for croc captures
+  y. 1 Notebook for zones
+  z. 1 Notebook for crocs
+
+ Lab 6 - Creating Silver to Gold pipelines
+ ------------------------------------------
+The silver to gold notebook does the following :
+
+  a. Perform correlation and time series analysis to delta gold files demonstrating data science gold assets
+  b. Aggregate the number of crocs by region by year demonstrating analytics gold assets
+
+ See Notebooks folder for :  
+  z. 1 Notebook
   
-  1 Notebook
-  
-  The silver to gold notebook does the following :
-  Aggregates data for easy analysis e.g. number of captures group by year
-  
-</dl>
 
 ### Pandas
 
