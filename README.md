@@ -1,6 +1,6 @@
-## AWS Croc Captures to Data Lake
+# AWS Croc Captures to Data Lake
 
-### 1 Intro
+## 1 Intro
 
 This repo provides working code notebooks that you can use to get a Data Lake operational in AWS using Croc Capture data.  You can execute code like the Delta Lake documentation with Scala Spark and PySpark on your local machine. It also provides Delta Lake function examples.
 
