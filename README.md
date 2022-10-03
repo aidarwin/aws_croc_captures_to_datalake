@@ -37,7 +37,7 @@ This repo has the following key components :
   <dd>Lab 8 - Reading Data from S3 using Python Visual</dd>
  
 
-### 5 Labs
+### 8 Labs
 
  Lab 1 - Setting up your AWS Environment
  ----------------------------------------
